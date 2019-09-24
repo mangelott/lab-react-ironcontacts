@@ -8,9 +8,20 @@ export default class ContactList extends React.Component {
     const contacts = this.props.contacts;
     return (
       <div>
-        {contacts.map(contact => (
-          <ContactItem contact={contact} />
-        ))}
+        <Table striped bordered hover size="sm">
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map(contact => (
+              <ContactItem key={contact.name} contact={contact} />
+            ))}
+          </tbody>
+        </Table>
       </div>
     );
   }
