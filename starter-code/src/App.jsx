@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 
 import "./App.css";
+import contacts from "./contacts.json";
+import Container from "react-bootstrap/Container";
+import ContactList from "./components/ContactList";
 
 class App extends Component {
   render() {
-    const message = "This is my app";
-
+    // const message = "This is my app";
+    const contactList = contacts.slice(0, 5);
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{message}</p>
-        </header>
-      </div>
+      <Container>
+        <ContactList contacts={contactList} />
+      </Container>
     );
   }
 }
