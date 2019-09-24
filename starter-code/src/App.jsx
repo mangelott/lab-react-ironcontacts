@@ -4,17 +4,21 @@ import Tittle from "./components/Tittle";
 
 import "./App.css";
 import contacts from "./contacts.json";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/ButtonToolbar";
+import { Container, Button } from "react-bootstrap";
+
 import ContactList from "./components/ContactList";
 
 class App extends Component {
   constructor() {
     super();
     this.contactList = contacts.slice(0, 5);
-    this.state = { contactList: this.contactList };
+
+    this.state = {
+      contactList: this.contactList
+    };
     this.addNew = this.addNew.bind(this);
     this.sort = this.sort.bind(this);
+    this.sortPop = this.sortPop.bind(this);
   }
 
   addNew() {
@@ -26,7 +30,17 @@ class App extends Component {
 
   sort() {
     this.setState({
-      contactList: this.contactList.sort((a, b) => (a.name > b.name ? 1 : -1))
+      contactList: this.state.contactList.sort((a, b) =>
+        a.name > b.name ? 1 : -1
+      )
+    });
+  }
+
+  sortPop() {
+    this.setState({
+      contactList: this.state.contactList.sort((a, b) =>
+        a.popularity > b.popularity ? 1 : -1
+      )
     });
   }
 
@@ -37,7 +51,8 @@ class App extends Component {
       <Container>
         <Tittle />
         <Button onClick={this.addNew}>Add New Contact</Button>
-        <Button onClick={this.sort}>SortContact</Button>
+        <Button onClick={this.sort}>Sort By Contact</Button>
+        <Button onClick={this.sortPop}>Sort by Popularity</Button>
         <ContactList contacts={contactList} />
       </Container>
     );
