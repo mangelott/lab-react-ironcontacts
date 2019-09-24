@@ -1,5 +1,6 @@
 import React from "react";
 // import Table from "react-bootstrap/Table";
+import { Button } from "react-bootstrap";
 
 const ContactItem = ({ contact }) => {
   return (
@@ -14,6 +15,9 @@ const ContactItem = ({ contact }) => {
       </td>
       <td>{contact.name}</td>
       <td>{contact.popularity}</td>
+      <td>
+        <Button>Delete</Button>
+      </td>
     </tr>
   );
 };
